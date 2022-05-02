@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HelloWorldController extends AbstractController
 {
     #[Route('/toto', name: 'app_hello_world')]
-    public function index(): Response
+    public function toto(): Response
     {
         // Imaginons qu'on récupère ça de la BDD
         $toto = [

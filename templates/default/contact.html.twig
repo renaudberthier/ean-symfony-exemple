@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Page de contact</title>
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('app_default') }}">Accueil</a></li>
+                    <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                    <li><a href="{{ path('app_product') }}">Produits</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <h1>Contact</h1>
+            <form method="POST" action="{{ path('app_save_contact') }}">
+                <label for="mail">Adresse email</label>
+                <input type="email" name="mail" id="mail" required />
+
+                <label for="message">Votre message</label>
+                <textarea id="message" name="message"></textarea>
+
+                <input type="submit" value="Envoyer" />
+            </form>
+        </main>
+    </body>
+</html>

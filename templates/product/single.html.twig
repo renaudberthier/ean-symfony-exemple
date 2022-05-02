@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Visualiser le produit {{ product.name }}</title>
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('app_default') }}">Accueil</a></li>
+                    <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                    <li><a href="{{ path('app_product') }}">Produits</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <h1>{{ product.name }}</h1>
+
+            <em>{{ product.price }}</em>
+        </main>
+    </body>
+</html>
