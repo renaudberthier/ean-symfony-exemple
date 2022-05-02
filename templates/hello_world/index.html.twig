@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Test Hello World Symfony</title>
+    </head>
+    <body>
+        <h1>Hello {{ user.firstname }} {{ user.lastname }}</h1>
+        
+        {% for i in range(0, 10) %}
+            {{ i }},
+        {% endfor %}
+    </body>
+</html>
