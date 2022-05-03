@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\Products;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,20 +20,7 @@ class ProductController extends AbstractController
     #[Route('/products', name: 'app_product')]
     public function index(): Response
     {
-        //$products = Products::getAllProducts();
-
-        $products = [
-            [
-                "name" => "Une table",
-                "price" => 20.05,
-                "slug" => "une-table"
-            ],
-            [
-                "name" => "Une autre table",
-                "price" => 40.12,
-                "slug" => "une-autre-table"
-            ]
-        ];
+        $products = Products::getAllProducts();
         return $this->render('product/index.html.twig', [
             'products' => $products,
         ]);
@@ -40,26 +28,31 @@ class ProductController extends AbstractController
 
     #[Route('/product/{index}-{slug}', name: 'app_product_single')]
     public function view(int $index, string $slug) : Response {
-        $products = [
-            [
-                "name" => "Une table",
-                "price" => 20.05,
-                "slug" => "une-table"
-            ],
-            [
-                "name" => "Une autre table",
-                "price" => 40.12,
-                "slug" => "une-autre-table"
-            ]
-        ];
-
-
-        $product = $products[$index] ?? null;
+        $product = Products::getProduct($index);
         if(!$product) {
             throw $this->createNotFoundException();
         }
         return $this->render('product/single.html.twig', [
             'product' => $product,
         ]);
+    }
+
+    #[Route('/product/add', name: 'app_product_add', methods:'GET|HEAD')]
+    public function add() : Response {
+        return $this->render('product/add.html.twig');
+    }
+
+    #[Route('/product/add', name: 'app_product_create', methods:'POST')]
+    public function create(Request $request) : Response {
+        $name = $request->request->get('name');
+        $price = $request->request->get('price');
+        $slug = $request->request->get('slug');
+
+        Products::addProduct([
+            "name" => $name,
+            "price" => $price,
+            "slug" => $slug
+        ]);
+        return $this->redirectToRoute('app_product');
     }
 }
