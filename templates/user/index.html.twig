@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Page utilisateurs</title>
+    </head>
+    <body>
+        <aside>
+            <nav>
+                <ul>
+                    <li><a href="{{ path('app_default') }}">Accueil</a></li>
+                    <li><a href="{{ path('app_contact') }}">Contact</a></li>
+                    <li><a href="{{ path('app_product') }}">Produits</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main>
+            <h1>Page utilisateurs</h1>
+
+            <section>
+            {% for user in users %}
+                <article>
+                    <h2>
+                        <a href="{{ path('app_user_single', { 'id': user.id }) }}">
+                            {{ user.firstname }} {{ user.lastname }}
+                        </a>
+                    </h2>
+                </article>
+            {% endfor %}
+            </section>
+        </main>
+    </body>
+</html>
