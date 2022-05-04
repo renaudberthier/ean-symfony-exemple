@@ -3,7 +3,5 @@
 {% block title %}Visualiser le produit {{ product.name }}{% endblock %}
 
 {% block body %}
-    {% for product in [product] %}
-        {{ include('product/_product.html.twig') }}
-    {% endfor %}
+    {{ include('product/_product.html.twig') }}
 {% endblock %}

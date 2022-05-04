@@ -1,7 +1,11 @@
+{% macro input(name, value, type = "text") %}
+    <input type="{{type}}" name="{{name}}" value="{{value}}" />
+{% endmacro %}
+
 <article>
     <h2>
-        <a href="{{ path('app_product_single', { 'index': loop.index0, 'slug': product.slug }) }}">
-            {{ product.name }}
+        <a href="{{ path('app_product_single', { 'index': index, 'slug': product.slug }) }}">
+            {{ product.name|title }}
         </a>
     </h2>
     <em>{{ product.price }}</em>
