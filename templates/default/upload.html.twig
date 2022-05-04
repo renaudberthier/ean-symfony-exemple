@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Envoyer une image{% endblock %}
+
+{% block body %}
+    <h1>Envoyer une image</h1>
+    <form method="POST" action="{{ path('app_upload_create') }}" enctype="multipart/form-data">
+        <label for="picture">Image</label>
+        <input type="file" name="picture" id="picture" required />
+
+        <input type="submit" value="Envoyer l'image" />
+    </form>
+{% endblock %}

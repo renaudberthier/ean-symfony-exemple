@@ -74,3 +74,4 @@ class CarController extends AbstractController
         return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);
     }
 }
+// Cross-Site Request Forgery
