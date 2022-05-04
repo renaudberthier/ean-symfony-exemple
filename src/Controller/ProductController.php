@@ -26,6 +26,15 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Route('/products/sub', name: 'app_product_sub')]
+    public function index_sub(): Response
+    {
+        $products = Products::getAllProducts();
+        return $this->render('product/index_sub.html.twig', [
+            'products' => $products,
+        ]);
+    }
+
     #[Route('/product/{index}-{slug}', name: 'app_product_single')]
     public function view(int $index, string $slug) : Response {
         $product = Products::getProduct($index);

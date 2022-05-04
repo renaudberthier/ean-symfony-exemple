@@ -1,35 +1,13 @@
-<!doctype html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Page produits</title>
-    </head>
-    <body>
-        <aside>
-            <nav>
-                <ul>
-                    <li><a href="{{ path('app_default') }}">Accueil</a></li>
-                    <li><a href="{{ path('app_contact') }}">Contact</a></li>
-                    <li><a href="{{ path('app_product') }}">Produits</a></li>
-                </ul>
-            </nav>
-        </aside>
+{% extends 'base.html.twig' %}
 
-        <main>
-            <h1>Page produits</h1>
+{% block title %}Page produits{% endblock %}
 
-            <section>
-            {% for product in products %}
-                <article>
-                    <h2>
-                        <a href="{{ path('app_product_single', { 'index': loop.index0, 'slug': product.slug }) }}">
-                            {{ product.name }}
-                        </a>
-                    </h2>
-                    <em>{{ product.price }}</em>
-                </article>
-            {% endfor %}
-            </section>
-        </main>
-    </body>
-</html>
+{% block body %}
+    <h1>Page produits</h1>
+
+    <section>
+    {% for product in products %}
+        {{ include('product/_product.html.twig') }}
+    {% endfor %}
+    </section>
+{% endblock %}

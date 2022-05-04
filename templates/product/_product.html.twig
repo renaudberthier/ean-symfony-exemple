@@ -1,0 +1,8 @@
+<article>
+    <h2>
+        <a href="{{ path('app_product_single', { 'index': loop.index0, 'slug': product.slug }) }}">
+            {{ product.name }}
+        </a>
+    </h2>
+    <em>{{ product.price }}</em>
+</article>
